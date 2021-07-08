@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>html-pagination task</title>
+</head>
+<body onload="myFunction()">
+    
+ <script>
+//1. Create a request variable
+var request = new XMLHttpRequest();
+//2. Create a connection
+request.open('GET', 'https://raw.githubusercontent.com/Rajavasanthan/jsondata/master/pagenation.json', true);
+//3. Send a request
+request.send();
+//4. Load the response
+request.onload = function(){
+    var data = JSON.parse(this.response);
+
+    var table1=document.createElement('table');
+        table1.setAttribute('class','info');
+        table1.setAttribute('border','5');
+        var myhead =document.createElement('thead');
+        var mytboyd=document.createElement('tbody');
+        var tr1=document.createElement('tr');
+        var th1=document.createElement('th');
+         th1.innerHTML="ID";
+        var th2=document.createElement('th');
+         th2.innerHTML="name";
+         var th3=document.createElement('th');
+         th3.innerHTML="Email";
+        tr1.append(th1,th2,th3);
+         myhead.append(tr1);
+       //  table1.append(myhead)
+       //  document.body.append(table1);
+
+    for(var i in data){
+      
+        var id = data[i].id
+        var name=data[i].name;
+       var email=data[i].email;
+       //for( var a=0;a<=10;a++)
+        //{
+        var tra=document.createElement('tr');
+        //for(var b=0;b<=3;b++)
+       // {
+        var td1=document.createElement('td');
+        var tex1=document.createTextNode=id ;
+        var td2=document.createElement('td');
+        var tex2=document.createTextNode=name;
+        var td3=document.createElement('td');
+        var tex3=document.createTextNode=email;
+        td1.append(tex1);
+        td2.append(tex2);
+        td3.append(tex3);
+        tra.append(td1,td2,td3);
+        mytboyd.append(tra);
+        }
+        table1.setAttribute('border','5');
+        table1.style.backgroundColor="pink";
+         table1.append(myhead,mytboyd);
+         document.body.append(table1);
+        console.log(data[i])
+        
+    
+  }
+
+
+
+
+
+function myFunction()
+ {
+   var x1=document.createElement("BUTTON");
+   var t1 = document.createTextNode("FIRST");
+   x1.appendChild(t1);
+   document.body.appendChild(x1);
+   //x1.addEventListener('click',tab1())
+   var x2=document.createElement('BUTTON');
+   var t2 = document.createTextNode("PREVIOUS");
+   x2.appendChild(t2);
+   document.body.appendChild(x2);
+  for(var i=2; i<=10;i++)
+  {
+ var x = document.createElement("BUTTON");
+  var t = document.createTextNode(i);
+  x.appendChild(t);
+  x.setAttribute('fontface','comics sans ms')
+  document.body.appendChild(x);
+  }
+ }
+//   function tab1()
+//   {
+//   var table1=document.createElement('table');
+//         table1.setAttribute('class','info');
+//         table1.setAttribute('border','5');
+//         var myhead =document.createElement('thead');
+//         var mytboyd=document.createElement('tbody');
+//         var tr1=document.createElement('tr');
+//         var th1=document.createElement('th');
+//          th1.innerHTML="ID";
+//         var th2=document.createElement('th');
+//          th2.innerHTML="name";
+//          var th3=document.createElement('th');
+//          th3.innerHTML="Email";
+//         tr1.append(th1,th2,th3);
+//          myhead.append(tr1);
+//          table1.append(myhead)
+//          document.body.append(table1);
+
+// }
+
+
+</script>  
+<br>
+<hr>
+   
+</body>
+</html>
